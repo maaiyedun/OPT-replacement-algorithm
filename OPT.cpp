@@ -1,4 +1,9 @@
-#include<bits/stdc++.h> 
+#include<bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <algorithm> 
+#include <map>
+
 using namespace std;
 int main(){
     int cSize,pSize,i,j,k;
@@ -7,12 +12,26 @@ int main(){
 
 	cout<<"Enter the number of Processes"<< endl;
 	cin>>pSize;
-    vector<int> p(pSize);
+  	
+	ifstream myfile("multi1.trc");
+	while (std::getline(myfile, line)) {
+		++pSize;
+	}
+		myfile.close();
+	}  
+	
+	vector<int> p(pSize);
 
-	cout<<"Enter Processes"<< endl;
-    for(i=0;i<pSize;i++){
-        cin>>p[i];
-    }
+	ifstream Cfile("multi1.trc");
+	if (Cfile.is_open()) {
+	for (i = 0; i < pSize; i++) {
+		getline(Cfile, line);
+		 p[i]=line;
+	}		
+		Cfile.close();
+	}
+
+
     vector<vector<int>> a(cSize,vector<int>(pSize,-1));
     map <int, int> mp;
     for(i=0;i<pSize;i++){
@@ -89,29 +108,7 @@ int main(){
             }
         }
     }
-    cout<<"Process ";
-    for(i=0;i<pSize;i++){
-        cout<<p[i]<<" ";
-    }
-    cout<<endl;
-    for(i=0;i<cSize;i++){
-        cout<<"Frame "<<i<<" ";
-        for(j=0;j<pSize;j++){
-            if(a[i][j]==-1)
-                cout<<"E ";
-                else
-            cout<<a[i][j]<<" ";
-        }
-        cout<<endl;
-    }
-    cout<<"HIT     ";
-    for(i=0;i<hitv.size();i++){
-        if(hitv[i]==0)
-            cout<<"  ";
-        else
-        cout<<hitv[i]<<" ";
-    }
-    cout<<endl;
+    
     cout<<"Hit "<<hit<<endl<<"Page Fault "<<pSize-hit<<endl;
     return 0;
 }
