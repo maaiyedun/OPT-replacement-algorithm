@@ -16,7 +16,6 @@ int main() {
 	cout << "Enter the cache Size" << endl;
 	cin >> cSize;
 
-	cout << "Enter the number of Processes" << endl;
 	ifstream myfile("multi1.trc");
 	while (std::getline(myfile, line)) {
 		++pSize;
