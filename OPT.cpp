@@ -20,7 +20,7 @@ int main() {
 	cout << "Enter the cache Size" << endl;
 	cin >> cSize;
 
-	ifstream myfile("multi1.trc");
+	ifstream myfile("cs.trc");
 	while (std::getline(myfile, line)) {
 		++pSize;
 	}
@@ -29,16 +29,18 @@ int main() {
 
 vector<int> p(pSize);
 
-ifstream Cfile("multi1.trc");
-if (Cfile.is_open()) {
+ifstream Cfile("cs.trc");
+
 	for (i = 0; i < pSize; i++) {
+    while (std::getline(Cfile, line)) {
+
 		stringstream geek(line);
 		geek>>con;
-
 		 p[i]=con;
+        }
 	}
 	Cfile.close();
-}
+
 
 
 vector<vector<int>> a(cSize, vector<int>(pSize, -1));
