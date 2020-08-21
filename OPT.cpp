@@ -15,6 +15,7 @@ int main() {
 	int i=0;
 	int j=0;
 	int k=0;
+	int con=0;
 	string line;
 	cout << "Enter the cache Size" << endl;
 	cin >> cSize;
