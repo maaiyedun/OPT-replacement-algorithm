@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -11,7 +10,11 @@
 
 using namespace std;
 int main() {
-	int cSize, pSize, i, j, k;
+	int cSize=0;
+	int pSize=0;
+	int i=0;
+	int j=0;
+	int k=0;
 	string line;
 	cout << "Enter the cache Size" << endl;
 	cin >> cSize;
@@ -28,8 +31,10 @@ vector<int> p(pSize);
 ifstream Cfile("multi1.trc");
 if (Cfile.is_open()) {
 	for (i = 0; i < pSize; i++) {
-		getline(Cfile, line);
-		p[i]=stoi(line);
+		stringstream geek(line);
+		geek>>con;
+
+		 p[i]=con;
 	}
 	Cfile.close();
 }
@@ -115,4 +120,3 @@ for (i = 1; i < pSize; i++) {
 cout << "Hit " << hit << endl << "Page Fault " << pSize - hit << endl;
 return 0;
 }
-
